@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duxing.xhc.api.common.dao.TUserGoodsSellNoticeMapper">
+  <resultMap id="BaseResultMap" type="com.duxing.xhc.api.common.model.TUserGoodsSellNotice">
+    <id column="goods_sell_notice_id" jdbcType="VARCHAR" property="goodsSellNoticeId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="goods_marketing_id" jdbcType="VARCHAR" property="goodsMarketingId" />
+    <result column="sell_time" jdbcType="VARCHAR" property="sellTime" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    goods_sell_notice_id, user_id, goods_marketing_id, sell_time, create_time, status
+  </sql>
+  <select id="selectByExample" parameterType="com.duxing.xhc.api.common.model.TUserGoodsSellNoticeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_user_goods_sell_notice
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_goods_sell_notice
+    where goods_sell_notice_id = #{goodsSellNoticeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_user_goods_sell_notice
+    where goods_sell_notice_id = #{goodsSellNoticeId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.duxing.xhc.api.common.model.TUserGoodsSellNoticeExample">
+    delete from t_user_goods_sell_notice
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.duxing.xhc.api.common.model.TUserGoodsSellNotice">
+    insert into t_user_goods_sell_notice (goods_sell_notice_id, user_id, goods_marketing_id, 
+      sell_time, create_time, status
+      )
+    values (#{goodsSellNoticeId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{goodsMarketingId,jdbcType=VARCHAR}, 
+      #{sellTime,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.duxing.xhc.api.common.model.TUserGoodsSellNotice">
+    insert into t_user_goods_sell_notice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="goodsSellNoticeId != null">
+        goods_sell_notice_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="goodsMarketingId != null">
+        goods_marketing_id,
+      </if>
+      <if test="sellTime != null">
+        sell_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="goodsSellNoticeId != null">
+        #{goodsSellNoticeId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsMarketingId != null">
+        #{goodsMarketingId,jdbcType=VARCHAR},
+      </if>
+      <if test="sellTime != null">
+        #{sellTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.duxing.xhc.api.common.model.TUserGoodsSellNoticeExample" resultType="java.lang.Long">
+    select count(*) from t_user_goods_sell_notice
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_user_goods_sell_notice
+    <set>
+      <if test="record.goodsSellNoticeId != null">
+        goods_sell_notice_id = #{record.goodsSellNoticeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsMarketingId != null">
+        goods_marketing_id = #{record.goodsMarketingId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sellTime != null">
+        sell_time = #{record.sellTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_user_goods_sell_notice
+    set goods_sell_notice_id = #{record.goodsSellNoticeId,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      goods_marketing_id = #{record.goodsMarketingId,jdbcType=VARCHAR},
+      sell_time = #{record.sellTime,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.duxing.xhc.api.common.model.TUserGoodsSellNotice">
+    update t_user_goods_sell_notice
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsMarketingId != null">
+        goods_marketing_id = #{goodsMarketingId,jdbcType=VARCHAR},
+      </if>
+      <if test="sellTime != null">
+        sell_time = #{sellTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where goods_sell_notice_id = #{goodsSellNoticeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.duxing.xhc.api.common.model.TUserGoodsSellNotice">
+    update t_user_goods_sell_notice
+    set user_id = #{userId,jdbcType=VARCHAR},
+      goods_marketing_id = #{goodsMarketingId,jdbcType=VARCHAR},
+      sell_time = #{sellTime,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where goods_sell_notice_id = #{goodsSellNoticeId,jdbcType=VARCHAR}
+  </update>
+  <select id="sumByExample" parameterType="com.duxing.xhc.api.common.model.TUserGoodsSellNoticeExample" resultType="long" >
+    select sum(${sumCol}) from t_user_goods_sell_notice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="batchUpdate" parameterType="java.util.List">
+    update t_user_goods_sell_notice 
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="goods_sell_notice_id =case goods_sell_notice_id" suffix="end,">
+        <foreach collection="recordList" index="index" item="item">
+          <if test="item.goodsSellNoticeId !=null ">
+            when #{item.goodsSellNoticeId,jdbcType=VARCHAR} then #{item.goodsSellNoticeId,jdbcType=VARCHAR}
+          </if>
+          <if test="item.goodsSellNoticeId ==null ">
+            when #{item.goodsSellNoticeId,jdbcType=VARCHAR} then t_user_goods_sell_notice.goods_sell_notice_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="user_id =case goods_sell_notice_id" suffix="end,">
+        <foreach collection="recordList" index="index" item="item">
+          <if test="item.userId !=null ">
+            when #{item.goodsSellNoticeId,jdbcType=VARCHAR} then #{item.userId,jdbcType=VARCHAR}
+          </if>
+          <if test="item.userId ==null ">
+            when #{item.goodsSellNoticeId,jdbcType=VARCHAR} then t_user_goods_sell_notice.user_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="goods_marketing_id =case goods_sell_notice_id" suffix="end,">
+        <foreach collection="recordList" index="index" item="item">
+          <if test="item.goodsMarketingId !=null ">
+            when #{item.goodsSellNoticeId,jdbcType=VARCHAR} then #{item.goodsMarketingId,jdbcType=VARCHAR}
+          </if>
+          <if test="item.goodsMarketingId ==null ">
+            when #{item.goodsSellNoticeId,jdbcType=VARCHAR} then t_user_goods_sell_notice.goods_marketing_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="sell_time =case goods_sell_notice_id" suffix="end,">
+        <foreach collection="recordList" index="index" item="item">
+          <if test="item.sellTime !=null ">
+            when #{item.goodsSellNoticeId,jdbcType=VARCHAR} then #{item.sellTime,jdbcType=VARCHAR}
+          </if>
+          <if test="item.sellTime ==null ">
+            when #{item.goodsSellNoticeId,jdbcType=VARCHAR} then t_user_goods_sell_notice.sell_time
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_time =case goods_sell_notice_id" suffix="end,">
+        <foreach collection="recordList" index="index" item="item">
+          <if test="item.createTime !=null ">
+            when #{item.goodsSellNoticeId,jdbcType=VARCHAR} then #{item.createTime,jdbcType=VARCHAR}
+          </if>
+          <if test="item.createTime ==null ">
+            when #{item.goodsSellNoticeId,jdbcType=VARCHAR} then t_user_goods_sell_notice.create_time
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="status =case goods_sell_notice_id" suffix="end,">
+        <foreach collection="recordList" index="index" item="item">
+          <if test="item.status !=null ">
+            when #{item.goodsSellNoticeId,jdbcType=VARCHAR} then #{item.status,jdbcType=INTEGER}
+          </if>
+          <if test="item.status ==null ">
+            when #{item.goodsSellNoticeId,jdbcType=VARCHAR} then t_user_goods_sell_notice.status
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where goods_sell_notice_id in(
+    <foreach collection="recordList" index="index" item="item" separator=",">
+      #{item.goodsSellNoticeId,jdbcType=VARCHAR}
+    </foreach>
+    )
+  </update>
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into t_user_goods_sell_notice (
+    goods_sell_notice_id,
+    user_id,
+    goods_marketing_id,
+    sell_time,
+    create_time,
+    status
+    )
+    values
+    <foreach collection="recordList" index="index" item="item" separator=",">
+      (
+      #{item.goodsSellNoticeId,jdbcType=VARCHAR},
+      #{item.userId,jdbcType=VARCHAR},
+      #{item.goodsMarketingId,jdbcType=VARCHAR},
+      #{item.sellTime,jdbcType=VARCHAR},
+      #{item.createTime,jdbcType=VARCHAR},
+      #{item.status,jdbcType=INTEGER}
+      )
+    </foreach>
+  </insert>
+  <delete id="batchDelete" parameterType="java.lang.String">
+    delete from t_user_goods_sell_notice where goods_sell_notice_id in (
+    <foreach collection="ids" index="index" item="item" separator=",">
+      #{item}
+    </foreach>
+    )
+  </delete>
+</mapper>
