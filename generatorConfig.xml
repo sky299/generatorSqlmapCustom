@@ -6,10 +6,10 @@
 <generatorConfiguration>
 
     <context id="testTables" targetRuntime="MyBatis3">
-        <plugin type = "com.github.oceanc.mybatis3.generator.plugin.SumSelectivePlugin" />
-        <plugin type = "com.github.oceanc.mybatis3.generator.plugin.MinMaxPlugin" />
-        <plugin type = "com.github.oceanc.mybatis3.generator.plugin.SliceTablePlugin" />
-        <plugin type = "com.github.oceanc.mybatis3.generator.plugin.WhereSqlTextPlugin" />
+<!--        <plugin type = "com.github.oceanc.mybatis3.generator.plugin.SumSelectivePlugin" />-->
+<!--        <plugin type = "com.github.oceanc.mybatis3.generator.plugin.MinMaxPlugin" />-->
+<!--        <plugin type = "com.github.oceanc.mybatis3.generator.plugin.SliceTablePlugin" />-->
+<!--        <plugin type = "com.github.oceanc.mybatis3.generator.plugin.WhereSqlTextPlugin" />-->
 
         <plugin type="com.hui.mybatis.plugins.MysqlBatchUpdatePlugin"/>
         <plugin type="com.hui.mybatis.plugins.BatchInsertPlugin"/>
@@ -21,8 +21,8 @@
      
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-        connectionURL="jdbc:mysql://47.92.119.114:3306/xhc" userId="fjroot"
-        password="dF2ILASFDAF$!23">
+        connectionURL="jdbc:mysql://119.91.112.184:3306/hobby" userId="root"
+        password="Czl396780*">
         </jdbcConnection>
 
 
@@ -33,7 +33,7 @@
 
         <!-- targetProject:生成PO类的位置 -->
 
-        <javaModelGenerator targetPackage="com.duxing.xhc.api.common.model"
+        <javaModelGenerator targetPackage="com.liumei.hobby.manager.common.model"
                             targetProject=".\src">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
@@ -41,155 +41,23 @@
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- targetProject:mapper映射文件生成的位置 -->
-        <sqlMapGenerator targetPackage="com.duxing.xhc.api.common.dao"
+        <sqlMapGenerator targetPackage="com.liumei.hobby.manager.common.dao"
                          targetProject=".\src">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
         <!-- targetPackage：mapper接口生成的位置 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.duxing.xhc.api.common.dao"
+                             targetPackage="com.liumei.hobby.manager.common.dao"
                              targetProject=".\src">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
-        <!--<table tableName="t_user_coupon">-->
-        <!--<generatedKey column="user_coupon_id" sqlStatement="Mysql" identity="true"/>-->
-
-        <!--</table>-->
-
-        <!--<table tableName="t_company_assessment_score">-->
-            <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql" identity="true"/>&ndash;&gt;-->
-
-        <!--</table>-->
-
-        <!--<table tableName="t_o2o_merchant">-->
-        <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-
-        <!--</table>-->
-        <!--<table tableName="user"><generatedKey column="id" sqlStatement="Mysql" identity="true"/></table>-->
-        <table tableName="t_appointment_goods"></table>
-
-        <!--<table tableName="t_goods_marketing_give_goods"></table>-->
-        <!--<table tableName="t_goods_marketing_give_redpacket"></table>-->
-        <!--<table tableName="t_grid_duty_plan"></table>-->
-        <!--<table tableName="t_guide_knowledge_file"></table>-->
-        <!--<table tableName="t_guide_train"></table>-->
-        <!--<table tableName="t_supervise_file"></table>-->
-        <!--<table tableName="t_supervise_lib"></table>-->
-
-        <!--<table tableName="t_guide_share"></table>-->
-
-        <!--
-       <table tableName="t_company_assessment_score_detail"></table>
-       <table tableName="t_dept"></table>
-       <table tableName="t_examination"></table>
-       <table tableName="t_grid"></table>
-       <table tableName="t_grid_dept"></table>
-       <table tableName="t_grid_duty_info"></table>
-       <table tableName="t_grid_duty_info_dept"></table>
-       <table tableName="t_grid_duty_plan"></table>
-       <table tableName="t_guide_feedback"></table>
-       <table tableName="t_guide_feedback_reply"></table>
-
-       <table tableName="t_guide_knowledge_file"></table>
-       <table tableName="t_guide_knowledge_type"></table>
-       <table tableName="t_guide_share"></table>
-       <table tableName="t_guide_share_reply"></table>
-       <table tableName="t_guide_train"></table>
-       <table tableName="t_inner_user"></table>
-       <table tableName="t_notice"></table>
-
-       <table tableName="t_rules"></table>
-
-       <table tableName="t_supervise_file"></table>
-       <table tableName="t_supervise_lib"></table>
-       <table tableName="t_system_role"></table>
-       <table tableName="t_system_role_auth"></table>
-       <table tableName="t_system_user"></table>
 
 
-       <table tableName="t_system_user_role"></table>
-       <table tableName="t_talents"></table>
-       -->
-       <!--<table tableName="t_user_gift_package_flow"></table>-->
-        <!--<table tableName="t_verify_code"></table>-->
-
-        <!--<table tableName="t_verify_code"></table>-->
-
-        <!--<table tableName="t_user_withdraw"></table>-->
-        <!--<table tableName="t_user_group"></table>-->
-
-         <!--指定数据库表-->
-
-        <!--<table tableName="t_car_auction"></table>-->
-
-        <!--<table tableName="t_car_auction_comment"></table>-->
-
-
-        <!--<table tableName="t_car_auction_deposit_order"></table>-->
-
-        <!--<table tableName="t_car_auction_order"></table>-->
-
-
-        <!--<table tableName="t_car_banner"></table>-->
-
-
-        <!--<table tableName="t_car_bbs"></table>-->
-
-
-        <!--<table tableName="t_car_bbs_ stick_order"></table>-->
-
-
-        <!--<table tableName="t_car_bbs_category"></table>-->
-
-        <!--<table tableName="t_car_bbs_comment"></table>-->
-
-
-        <!--<table tableName="t_car_bbs_stick_config"></table>-->
-
-
-        <!--<table tableName="t_car_im_friend"></table>-->
-
-        <!--<table tableName="t_car_im_group"></table>-->
-        <!--<table tableName="t_car_im_group_member"></table>-->
-
-
-        <!--<table tableName="t_car_live_room"></table>-->
-
-
-        <!--<table tableName="t_car_sms_verify_code"></table>-->
-
-
-        <!--<table tableName="t_car_splash"></table>-->
-
-
-        <!--<table tableName="t_car_svip_ upgrade_order"></table>-->
-        <!--<table tableName="t_car_svip_config"></table>-->
-
-        <!--<table tableName="t_car_user"></table>-->
-
-        <!--<table tableName="t_car_vip_ upgrade_order"></table>-->
-
-        <!--<table tableName="t_car_vip_config"></table>-->
-
-        <!--<table tableName="czc_ic_card_flow"></table>-->
-        <!--<table tableName="t_customer"></table>-->
-        <!--<table tableName="t_customer_account"></table>-->
-        <!--<table tableName="t_customer_bind_supplier"></table>-->
-        <!--<table tableName="t_customer_callback"></table>-->
-        <!--<table tableName="t_customer_domain"></table>-->
-        <!--<table tableName="t_pay_order"></table>-->
-        <!--<table tableName="t_qr_code"></table>-->
-        <!--<table tableName="t_recharge_record"></table>-->
-        <!--<table tableName="t_supplier"></table>-->
-        <!--<table tableName="orders"></table>-->
-        <!--<table tableName="orderdetail"></table>-->
-        <!-- <table schema="" tableName="sys_user"></table>
-        <table schema="" tableName="sys_role"></table>
-        <table schema="" tableName="sys_permission"></table>
-        <table schema="" tableName="sys_user_role"></table>
-        <table schema="" tableName="sys_role_permission"></table> -->
+        <table tableName="t_advertisement">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
 
         <!-- 有些表的字段需要指定java类型
          <table schema="" tableName="">
